@@ -12,13 +12,15 @@ const creyenteSchema = mongoose.Schema({
     ministerio:{
         type: String,
         required: [true,"el ministerio es obligatorio"],
-        trim: true
+        trim: true,
+        enum: ["Adoracion", "Mujeres", "Jovenes", "Hombres"]
     },
 
     nivelFormacion:{
         type: String,
         required: [true,"este campo es obligatorio"],
-        trim: true
+        trim: true, 
+        enum: ["Liderazgo", "Anciano"]
     },
 
     edad:{
@@ -30,7 +32,8 @@ const creyenteSchema = mongoose.Schema({
     nivelRuta:{
         type: String,
         required: [true,"la ruta es obligatoria"],
-        trim: true
+        trim: true, 
+        enum: ["Nuevo", "Consolidado", "Enviado"]
     }
 
 },

@@ -1,10 +1,10 @@
 import Router from "express";
 import { getCreyentes, getCreyente, addCreyente, deleteCreyente, updateCreyente } from "../controllers/creyente.controller.js";
 import { check } from "express-validator";
+import { validateDocument } from "../middleware/validate.documents.js";
 import Ministerio from "../models/Ministerio.js";
 import NivelFormacion from "../models/NivelFormacion.js";
 import NivelRuta from "../models/NivelRuta.js";
-import { validateDocument } from "../middleware/validate.documents.js";
 
 const router = Router();
 
@@ -12,7 +12,11 @@ router.get("/all", getCreyentes);
 router.get("/one/:id", getCreyente);
 router.post("/add", [
     check('nombre', 'El nombre no es valido').not().isEmpty(),
-    check('ministerio').custom(async(nombre = '') =>{
+    check('ministerio', 'Ministerio no valido').not().isEmpty(),
+    check('nivelFormacion', 'Nivel de Formacion no valido').not().isEmpty(),
+    check('edad', 'La edad no es valida').not().isEmpty(),
+    check('nivelRuta', 'Nivel de Ruta no es valida').not().isEmpty(),
+    /* check('ministerio').custom(async(nombre = '') =>{
         const existeCreyente = await Ministerio.findOne({nombre});
         if(!existeCreyente){   
             throw new Error(`El Ministerio ${nombre} no esta en la base de datos`)
@@ -30,7 +34,7 @@ router.post("/add", [
         if(!existeNivelRuta){
             throw new Error(`El Nivel de Ruta ${nombre} no esta en la base de datos`)
         }
-    }), validateDocument
+    }), validateDocument */
 ], addCreyente);
 router.delete("/del/:id", deleteCreyente);
 router.patch("/upd/:id", updateCreyente);

@@ -3,10 +3,10 @@
 }
 
 .fondo{
-    background-image: url(../dist/img/fondo.jpg);
+    background-image: url(../dist/img/iglesia.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 60.5rem;
+    height: 62rem;
     position: relative;
 }
 

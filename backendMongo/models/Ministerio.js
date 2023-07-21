@@ -6,7 +6,7 @@ const ministerioSchema = mongoose.Schema({
     nombre:{
         type:String,
         required:true,
-        trim:true
+        trim:true,
     }
 },
 {
@@ -18,3 +18,4 @@ const Ministerio = mongoose.model("Ministerio",ministerioSchema,"ministerios")
 
 //export
 export default Ministerio
+
